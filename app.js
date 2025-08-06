@@ -52,6 +52,7 @@ app.post("/addnew", async (req, res) => {
   }
 });
 
+//view order
 app.get("/vieworder", (req, res) => {
   res.render("vieworder");
 });
