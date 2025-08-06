@@ -24,8 +24,8 @@ app.get("/order", (req, res) => {
   res.render("order");
 });
 
-app.get("/addNew", (req, res) => {
-  res.render("addNew");
+app.get("/addnew", (req, res) => {
+  res.render("addnew");
 });
 
 app.get("/vieworder", (req, res) => {
