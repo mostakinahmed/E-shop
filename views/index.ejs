@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ecommerce Homepage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Hero Slider -->
+    <section class="relative w-full max-h-[600px] overflow-hidden">
+      <div class="relative h-[600px] w-full">
+        <!-- Slide 1 -->
+        <div
+          class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1470&q=80');
+          "
+        ></div>
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div
+          class="absolute inset-0 flex flex-col justify-center items-start max-w-4xl p-8 md:p-20 text-white"
+        >
+          <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+            Discover The Latest Tech
+          </h1>
+          <p class="mb-6 text-lg md:text-xl max-w-lg">
+            Explore our new collection of cutting-edge gadgets and accessories.
+          </p>
+          <a
+            href="#shop"
+            class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-md transition"
+            >Shop Now</a
+          >
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div
+        class="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-1000"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1512499617640-c2f9998f24e3?auto=format&fit=crop&w=1470&q=80');
+        "
+      ></div>
+      <!-- Add overlay and content as above if you want multiple slides -->
+
+      <!-- Controls and indicators can be added with JS if desired -->
+    </section>
+
+    <!-- Featured Categories -->
+    <section id="shop" class="max-w-7xl mx-auto p-6 mt-12">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900">Shop by Category</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div
+          class="bg-white rounded-lg shadow hover:shadow-lg transition p-6 cursor-pointer text-center"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
+            alt="Electronics"
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="text-xl font-semibold">Electronics</h3>
+        </div>
+
+        <div
+          class="bg-white rounded-lg shadow hover:shadow-lg transition p-6 cursor-pointer text-center"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=80"
+            alt="Clothing"
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="text-xl font-semibold">Clothing</h3>
+        </div>
+
+        <div
+          class="bg-white rounded-lg shadow hover:shadow-lg transition p-6 cursor-pointer text-center"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=400&q=80"
+            alt="Accessories"
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="text-xl font-semibold">Accessories</h3>
+        </div>
+
+        <div
+          class="bg-white rounded-lg shadow hover:shadow-lg transition p-6 cursor-pointer text-center"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+            alt="Home Appliances"
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="text-xl font-semibold">Home Appliances</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Preview -->
+    <section class="max-w-7xl mx-auto p-6 mt-16">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900">Featured Products</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <!-- Example product cards -->
+        <div
+          class="bg-white rounded-lg shadow hover:shadow-lg transition p-4 cursor-pointer"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1512499617640-c2f9998f24e3?auto=format&fit=crop&w=400&q=80"
+            alt="Smart Watch"
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="font-semibold text-lg mb-2">Smart Watch</h3>
+          <p class="text-indigo-600 font-bold">$199.99</p>
+        </div>
+
+        <div
+          class="bg-white rounded-lg shadow hover:shadow-lg transition p-4 cursor-pointer"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=80"
+            alt="Headphones"
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="font-semibold text-lg mb-2">Wireless Headphones</h3>
+          <p class="text-indigo-600 font-bold">$149.99</p>
+        </div>
+
+        <div
+          class="bg-white rounded-lg shadow hover:shadow-lg transition p-4 cursor-pointer"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
+            alt="Sneakers"
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="font-semibold text-lg mb-2">Stylish Sneakers</h3>
+          <p class="text-indigo-600 font-bold">$99.99</p>
+        </div>
+
+        <div
+          class="bg-white rounded-lg shadow hover:shadow-lg transition p-4 cursor-pointer"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+            alt="Coffee Maker"
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="font-semibold text-lg mb-2">Coffee Maker</h3>
+          <p class="text-indigo-600 font-bold">$79.99</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-indigo-600 text-white text-center py-6 mt-20">
+      <p>&copy; 2025 Your E-Commerce Shop. All rights reserved.</p>
+    </footer>
+
+    <!-- Optional: Add simple slider JS for multiple slides -->
+    <script>
+      // Simple auto slider example (if you want to add multiple slides)
+      // Code left minimal here for clarity; can expand on request.
+    </script>
+  </body>
+</html>
