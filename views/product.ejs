@@ -80,7 +80,30 @@
               </tr>
             </thead>
             <tbody>
+              <% data.forEach(function(val) { %>
               <tr class="border-b hover:bg-indigo-50 cursor-pointer">
+                <td class="px-6 py-4"><%= val.productId %></td>
+                <td class="px-6 py-4">
+                  <img
+                    src="<%= val.imageUrl %>"
+                    alt="<%= val.productName %>"
+                    class="w-12 h-12 rounded"
+                  />
+                </td>
+                <td class="px-6 py-4"><%= val.productName %></td>
+                <td class="px-6 py-4"><%= val.category %></td>
+                <td class="px-6 py-4 font-semibold">$<%= val.price %></td>
+                <td class="px-6 py-4"><%= val.stock %></td>
+                <td class="px-6 py-4">
+                  <button class="text-indigo-600 hover:underline">Edit</button>
+                  <button class="text-red-600 pl-2 hover:underline">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+              <% }); %>
+
+              <!-- <tr class="border-b hover:bg-indigo-50 cursor-pointer">
                 <td class="px-6 py-4">P001</td>
                 <td class="px-6 py-4">
                   <img
@@ -99,108 +122,7 @@
                     Delete
                   </button>
                 </td>
-              </tr>
-              <tr class="border-b hover:bg-indigo-50 cursor-pointer">
-                <td class="px-6 py-4">P002</td>
-                <td class="px-6 py-4">
-                  <img
-                    src="https://i.ibb.co.com/8DYnK82B/mostakin.jpg"
-                    alt="Smart Watch"
-                    class="w-12 h-12 rounded"
-                  />
-                </td>
-                <td class="px-6 py-4">Smart Watch</td>
-                <td class="px-6 py-4">Electronics</td>
-                <td class="px-6 py-4 font-semibold">$199.99</td>
-                <td class="px-6 py-4">75</td>
-                <td class="px-6 py-4">
-                  <button class="text-indigo-600 hover:underline">Edit</button>
-                  <button class="text-red-600 pl-2 hover:underline">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-              <tr class="border-b hover:bg-indigo-50 cursor-pointer">
-                <td class="px-6 py-4">P003</td>
-                <td class="px-6 py-4">
-                  <img
-                    src="https://i.ibb.co.com/8DYnK82B/mostakin.jpg"
-                    alt="Bluetooth Speaker"
-                    class="w-12 h-12 rounded"
-                  />
-                </td>
-                <td class="px-6 py-4">Bluetooth Speaker</td>
-                <td class="px-6 py-4">Electronics</td>
-                <td class="px-6 py-4 font-semibold">$49.99</td>
-                <td class="px-6 py-4">180</td>
-                <td class="px-6 py-4">
-                  <button class="text-indigo-600 hover:underline">Edit</button>
-                  <button class="text-red-600 pl-2 hover:underline">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-              <tr class="border-b hover:bg-indigo-50 cursor-pointer">
-                <td class="px-6 py-4">P004</td>
-                <td class="px-6 py-4">
-                  <img
-                    src="https://i.ibb.co.com/8DYnK82B/mostakin.jpg"
-                    alt="Laptop Backpack"
-                    class="w-12 h-12 rounded"
-                  />
-                </td>
-                <td class="px-6 py-4">Laptop Backpack</td>
-                <td class="px-6 py-4">Accessories</td>
-                <td class="px-6 py-4 font-semibold">$79.99</td>
-                <td class="px-6 py-4">90</td>
-                <td class="px-6 py-4">
-                  <button class="text-indigo-600 hover:underline">Edit</button>
-                  <button class="text-red-600 pl-2 hover:underline">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-              <tr class="border-b hover:bg-indigo-50 cursor-pointer">
-                <td class="px-6 py-4">P005</td>
-                <td class="px-6 py-4">
-                  <img
-                    src="https://i.ibb.co.com/8DYnK82B/mostakin.jpg"
-                    alt="Gaming Mouse"
-                    class="w-12 h-12 rounded"
-                  />
-                </td>
-                <td class="px-6 py-4">Gaming Mouse</td>
-                <td class="px-6 py-4">Electronics</td>
-                <td class="px-6 py-4 font-semibold">$59.99</td>
-                <td class="px-6 py-4">150</td>
-                <td class="px-6 py-4">
-                  <button class="text-indigo-600 hover:underline">Edit</button>
-                  <button class="text-red-600 pl-2 hover:underline">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-              <!-- Repeat for P006 to P020 -->
-              <tr class="border-b hover:bg-indigo-50 cursor-pointer">
-                <td class="px-6 py-4">P006</td>
-                <td class="px-6 py-4">
-                  <img
-                    src="https://i.ibb.co.com/8DYnK82B/mostakin.jpg"
-                    alt="Running Shoes"
-                    class="w-12 h-12 rounded"
-                  />
-                </td>
-                <td class="px-6 py-4">Running Shoes</td>
-                <td class="px-6 py-4">Footwear</td>
-                <td class="px-6 py-4 font-semibold">$89.99</td>
-                <td class="px-6 py-4">200</td>
-                <td class="px-6 py-4">
-                  <button class="text-indigo-600 hover:underline">Edit</button>
-                  <button class="text-red-600 pl-2 hover:underline">
-                    Delete
-                  </button>
-                </td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
         </div>

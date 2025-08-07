@@ -19,8 +19,12 @@ app.get("/admin", (req, res) => {
   res.render("admin");
 });
 
-app.get("/product", (req, res) => {
-  res.render("product");
+app.get("/product", async (req, res) => {
+  // Fetch products from the database
+  let data = await product.find();
+  //console.log("✅ Products fetched successfully:", data);
+
+  res.render("product", { data });
 });
 
 app.get("/order", (req, res) => {
@@ -46,7 +50,7 @@ app.post("/addnew", async (req, res) => {
     await data.save();
 
     console.log("✅ Product added:", data);
-    res.redirect("/admin");
+    res.redirect("/product");
   } catch (err) {
     console.error("❌ Error adding product:", err);
     res.status(500).send("Internal Server Error");
