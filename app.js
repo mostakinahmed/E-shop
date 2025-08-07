@@ -35,7 +35,7 @@ app.post("/addnew", async (req, res) => {
   let { productName, price, category, stock, imageUrl, description } = req.body;
 
   try {
-    let data = await product.create({
+    let data = new product({
       productName,
       price,
       category,
@@ -43,6 +43,7 @@ app.post("/addnew", async (req, res) => {
       imageUrl,
       description,
     });
+    await data.save();
 
     console.log("✅ Product added:", data);
     res.redirect("/admin");
