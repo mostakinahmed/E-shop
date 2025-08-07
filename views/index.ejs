@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>OneMart</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-gray-50 text-gray-800">
@@ -152,8 +157,41 @@
       </div>
     </section>
 
+    <!-- All Products Preview -->
+    <section class="max-w-7xl mx-auto p-6 mt-16">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900">All Products</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <!-- Example product cards -->
+        <% data.forEach(function(val) { %>
+        <div
+          class="w-64 h-80 bg-white rounded-none shadow-md overflow-hidden border hover:shadow-lg transition"
+        >
+          <div class="h-[230px] w-full">
+            <img
+              src="<%= val.imageUrl %>"
+              alt="Product Image"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="flex flex-col justify-between items-center">
+            <h3 class="text-lg font-semibold ml-1 text-gray-800 truncate">
+              <%= val.productName %>
+            </h3>
+            <div class="text-lg font-bold text-indigo-600">Tk. <%= val.price%></div>
+            <button
+              class="w-full inline-block mt-1 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-1 flex items-center justify-center space-x-2 transition rounded-none"
+            >
+              <i class="fas fa-shopping-cart"></i>
+              <span>Buy Now</span>
+            </button>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </section>
+
     <footer class="bg-indigo-600 text-white text-center py-6 mt-20">
-      <p>&copy; 2025 Your E-Commerce Shop. All rights reserved.</p>
+      <p>&copy; 2025 Your E-Commerce Shop. All rights reserved. @mostakin</p>
     </footer>
 
     <!-- Optional: Add simple slider JS for multiple slides -->
