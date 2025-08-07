@@ -21,8 +21,10 @@ app.get("/admin", (req, res) => {
 
 app.get("/product", async (req, res) => {
   // Fetch products from the database
-  let data = await product.find();
-  //console.log("✅ Products fetched successfully:", data);
+  // let data = await product.find();
+  const data = await product.find().sort({ _id: -1 }).limit(3);
+
+  //console.log("Products fetched successfully:", data);
 
   res.render("product", { data });
 });
@@ -49,8 +51,8 @@ app.post("/addnew", async (req, res) => {
     });
     await data.save();
 
-    console.log("✅ Product added:", data);
-    res.redirect("/product");
+    // res.redirect("/product");
+    res.redirect("/product?success=1");
   } catch (err) {
     console.error("❌ Error adding product:", err);
     res.status(500).send("Internal Server Error");
@@ -60,6 +62,11 @@ app.post("/addnew", async (req, res) => {
 //view order
 app.get("/vieworder", (req, res) => {
   res.render("vieworder");
+});
+
+app.get("/allproduct", async (req, res) => {
+  let data = await product.find();
+  res.render("allproduct", { data });
 });
 
 app.listen(process.env.PORT || 3000, () => {

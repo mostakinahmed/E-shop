@@ -12,7 +12,7 @@
     <title>E-commerce Admin Panel</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-gray-100 min-h-screen flex overflow-hidden">
+  <body class="bg-gray-100 min-h-screen flex">
     <!-- Sidebar -->
     <aside class="w-64 bg-white shadow-lg flex flex-col pb-5">
       <div class="p-6 border-b border-gray-200">
@@ -114,15 +114,13 @@
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
         >
           <!-- Total Products -->
-          <a href="/allproduct">
-            <div class="bg-white p-5 rounded-lg shadow flex items-center gap-5">
-              <i class="fa-solid fa-box text-indigo-600 text-2xl"></i>
-              <div>
-                <div class="text-sm text-gray-500 pb-1">Total Products</div>
-                <div class="text-xl font-bold text-indigo-700">100</div>
-              </div>
+          <div class="bg-white p-4 rounded-lg shadow flex items-center gap-4">
+            <i class="fa-solid fa-box text-indigo-600 text-2xl"></i>
+            <div>
+              <div class="text-sm text-gray-500">Total Products</div>
+              <div class="text-xl font-bold text-indigo-700">145</div>
             </div>
-          </a>
+          </div>
 
           <!-- Out of Stock -->
           <div class="bg-white p-4 rounded-lg shadow">
@@ -141,67 +139,6 @@
             <div class="text-sm text-gray-500">Categories</div>
             <div class="text-2xl font-bold text-green-600">9</div>
           </div>
-
-          <!-- Most Viewed Product -->
-          <!-- <div class="bg-white p-4 rounded-lg shadow">
-            <div class="text-sm text-gray-500">Most Viewed Product</div>
-            <div class="text-lg font-semibold text-gray-700">
-              Wireless Headphones
-            </div>
-            <div class="text-sm text-gray-400">3.2k Views</div>
-          </div> -->
-
-          <!-- Top Seller -->
-          <div class="bg-white p-4 rounded-lg shadow">
-            <div class="text-sm text-gray-500">Top Seller</div>
-            <div class="text-lg font-semibold text-gray-700">
-              Smart Watch Pro
-            </div>
-            <div class="text-sm text-green-600">1,230 Units Sold</div>
-          </div>
-
-          <!-- Average Rating -->
-          <div class="bg-white p-4 rounded-lg shadow">
-            <div class="text-sm text-gray-500">Average Rating</div>
-            <div class="text-2xl font-bold text-yellow-500">4.6 ★</div>
-          </div>
-
-          <!-- Inventory Value -->
-          <div class="bg-white p-4 rounded-lg shadow">
-            <div class="text-sm text-gray-500">Inventory Value</div>
-            <div class="text-2xl font-bold text-indigo-600">$58,900</div>
-          </div>
-
-          <!-- New Products This Month -->
-          <div class="bg-white p-4 rounded-lg shadow">
-            <div class="text-sm text-gray-500">New Products (Aug)</div>
-            <div class="text-2xl font-bold text-blue-600">17</div>
-          </div>
-
-          <!-- Top Rated Product -->
-          <div class="bg-white p-4 rounded-lg shadow">
-            <div class="text-sm text-gray-500">Top Rated</div>
-            <div class="text-lg font-semibold text-gray-700">Smart Speaker</div>
-            <div class="text-sm text-yellow-500">★ 4.9 (150 Reviews)</div>
-          </div>
-
-          <!-- // Add Product Button -->
-          <div
-            class="bg-white shadow-md rounded-xl p-6 flex items-center justify-between space-x-3 border border-1 border-indigo-600"
-          >
-            <!-- Icon -->
-            <div class="bg-indigo-100 text-indigo-600 p-4 rounded-full">
-              <i class="fa-solid fa-box-open fa-lg"></i>
-            </div>
-
-            <!-- Button -->
-            <a
-              href="/addnew"
-              class="bg-indigo-600 text-white px-3 py-2 rounded-lg hover:bg-indigo-700 transition"
-            >
-              + Add New Product
-            </a>
-          </div>
         </div>
       </header>
       <section class="mt-8">
@@ -219,9 +156,11 @@
                 </th>
                 <th class="px-6 py-3 text-left text-sm font-semibold">Price</th>
                 <th class="px-6 py-3 text-left text-sm font-semibold">Stock</th>
-                <!-- <th class="px-6 py-3 text-left text-sm font-semibold">
+                <th
+                  class="px-6 py-3 inline-block ml-3 text-left text-sm font-semibold"
+                >
                   Actions
-                </th> -->
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -238,13 +177,13 @@
                 <td class="px-6 py-4"><%= val.productName %></td>
                 <td class="px-6 py-4"><%= val.category %></td>
                 <td class="px-6 py-4 font-semibold">$<%= val.price %></td>
-                <td class="px-6 py-4"><%= val.stock %></td>
-                <!-- <td class="px-6 py-4">
+                <td class="px-6 py-4 inline-block ml-2"><%= val.stock %></td>
+                <td class="px-6 py-4">
                   <button class="text-indigo-600 hover:underline">Edit</button>
                   <button class="text-red-600 pl-2 hover:underline">
                     Delete
                   </button>
-                </td> -->
+                </td>
               </tr>
               <% }); %>
             </tbody>
@@ -252,29 +191,5 @@
         </div>
       </section>
     </main>
-
-    <!-- Toast -->
-    <div
-      id="successToast"
-      class="hidden fixed top-5 right-5 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50"
-    >
-      ✅ Product added successfully!
-    </div>
-
-    <script>
-      const params = new URLSearchParams(window.location.search);
-      if (params.get("success") === "1") {
-        const toast = document.getElementById("successToast");
-        toast.classList.remove("hidden");
-
-        setTimeout(() => {
-          toast.classList.add("hidden");
-          // Optional: remove the ?success=1 from the URL without reloading
-          const newUrl = new URL(window.location);
-          newUrl.searchParams.delete("success");
-          window.history.replaceState({}, "", newUrl);
-        }, 3000);
-      }
-    </script>
   </body>
 </html>
