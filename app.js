@@ -77,8 +77,31 @@ app.get("/vieworder", (req, res) => {
 });
 
 app.get("/allproduct", async (req, res) => {
-  let data = await product.find();
-  res.render("allproduct", { data });
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 9;
+    const skip = (page - 1) * limit;
+
+    const totalCount = await product.countDocuments();
+    const totalPages = Math.ceil(totalCount / limit);
+
+    const products = await product
+      .find()
+      .sort({ _id: -1 })
+      .skip(skip)
+      .limit(limit);
+    const startingIndex = (page - 1) * limit;
+    res.render("allproduct", {
+      startingIndex,
+      products,
+      currentPage: page,
+      totalPages,
+      limit,
+    });
+  } catch (err) {
+    console.error("Error:", err);
+    res.status(500).send("Something went wrong");
+  }
 });
 
 app.listen(process.env.PORT || 3000, () => {
