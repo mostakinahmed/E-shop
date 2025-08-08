@@ -12,22 +12,33 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", async (req, res) => {
-   let data = await product.find();
+  let data = await product.find();
   res.render("index.ejs", { data });
 });
 
-app.get("/admin", (req, res) => {
-  res.render("admin");
+app.get("/admin", async (req, res) => {
+  //console.log("Products fetched successfully:", data);
+  const totalProducts = await product.countDocuments();
+  res.render("admin", { totalProducts });
 });
 
 app.get("/product", async (req, res) => {
   // Fetch products from the database
   // let data = await product.find();
+  const countTotalProducts = await product.countDocuments();
   const data = await product.find().sort({ _id: -1 }).limit(3);
+  // Fetch low stock products
+  const LowStockProducts = await product.find({ stock: { $lte: 5 } });
+  const countLowStockProducts = LowStockProducts.length;
 
-  //console.log("Products fetched successfully:", data);
-
-  res.render("product", { data });
+  const outOfStockProducts = await product.find({ stock: { $eq: 0 } });
+  const countOutOfStockProducts = outOfStockProducts.length;
+  res.render("product", {
+    data,
+    countTotalProducts,
+    countLowStockProducts,
+    countOutOfStockProducts,
+  });
 });
 
 app.get("/order", (req, res) => {
