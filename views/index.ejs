@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" style="box-sizing: border-box;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>OneMart</title>
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
     <style>
+      /* Box sizing for all elements for consistent sizing */
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+      body {
+        /* Set a default system font stack for better consistency */
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
       .slider {
         transition: transform 0.7s ease-in-out;
       }
     </style>
   </head>
-  <body class="bg-gray-50 text-gray-800">
+  <body class="bg-gray-50 text-gray-800 min-h-screen">
     <!-- Navbar -->
     <nav class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,9 +49,11 @@
                 type="text"
                 placeholder="Search for products..."
                 class="w-full rounded-full border border-gray-300 pl-4 pr-10 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                autocomplete="off"
               />
               <button
                 class="absolute inset-y-0 right-0 px-3 text-gray-500 hover:text-indigo-600"
+                aria-label="Search"
               >
                 <i class="fas fa-search"></i>
               </button>
@@ -58,7 +76,7 @@
             >
 
             <!-- Cart -->
-            <a href="#" class="relative">
+            <a href="#" class="relative" aria-label="Shopping Cart">
               <i class="fa-solid fa-cart-shopping text-gray-700 text-xl"></i>
               <span
                 class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full"
@@ -67,7 +85,7 @@
             </a>
 
             <!-- User -->
-            <a href="#">
+            <a href="#" aria-label="User Profile">
               <i class="fa-solid fa-user text-gray-700 text-xl"></i>
             </a>
           </div>
@@ -77,6 +95,7 @@
             <button
               id="mobile-menu-btn"
               class="text-gray-700 text-2xl focus:outline-none"
+              aria-label="Open mobile menu"
             >
               <i class="fa-solid fa-bars"></i>
             </button>
@@ -91,15 +110,12 @@
             type="text"
             placeholder="Search..."
             class="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            autocomplete="off"
           />
           <a href="#" class="block text-gray-700 hover:text-indigo-600">Home</a>
           <a href="#" class="block text-gray-700 hover:text-indigo-600">Shop</a>
-          <a href="#" class="block text-gray-700 hover:text-indigo-600"
-            >Deals</a
-          >
-          <a href="#" class="block text-gray-700 hover:text-indigo-600"
-            >Contact</a
-          >
+          <a href="#" class="block text-gray-700 hover:text-indigo-600">Deals</a>
+          <a href="#" class="block text-gray-700 hover:text-indigo-600">Contact</a>
         </div>
       </div>
     </nav>
@@ -115,8 +131,12 @@
     </script>
 
     <!-- Hero Slider -->
-    <section class="relative w-full max-h-[600px] overflow-hidden">
-      <div class="relative w-full h-[600px] overflow-hidden">
+    <section
+      class="relative w-full max-h-[600px] overflow-hidden mt-16"
+
+    >
+    
+      <div class="relative w-full h-[600px] md:h-[450px] sm:h-[300px] overflow-hidden">
         <!-- Slider Wrapper -->
         <div id="slider" class="flex w-full h-full slider">
           <img
@@ -179,7 +199,11 @@
     </section>
 
     <!-- Featured Categories -->
-    <section id="shop" class="max-w-7xl mx-auto p-6 mt-12">
+    <section
+      id="shop"
+      class="max-w-7xl mx-auto p-6 mt-12"
+      style="max-width: 1080px;"
+    >
       <h2 class="text-3xl font-bold mb-8 text-gray-900">Shop by Category</h2>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div
@@ -229,7 +253,11 @@
     </section>
 
     <!-- Featured Products Preview -->
-    <section class="max-w-7xl mx-auto p-6 mt-16">
+    <section
+      class="max-w-7xl mx-auto p-6 mt-16"
+      style="max-width: 1080px;"
+      /* fixed max width for your 1080px screen */
+    >
       <h2 class="text-3xl font-bold mb-8 text-gray-900">Featured Products</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <!-- Example product cards -->
@@ -284,11 +312,15 @@
     </section>
 
     <!-- All Products Preview -->
-    <section class="max-w-7xl mx-auto p-6 mt-16">
+    <section
+      class="max-w-7xl mx-auto p-6 mt-16"
+      style="max-width: 1080px;"
+      /* fixed max width for your 1080px screen */
+    >
       <h2 class="text-3xl font-bold mb-8 text-gray-900">All Products</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <!-- Example product cards -->
-        <% data.forEach(function(val) { %>
+        <% data.forEach(function (val) { %>
         <div
           class="w-64 h-80 bg-white rounded-none shadow-md overflow-hidden border hover:shadow-lg transition"
         >
@@ -304,7 +336,7 @@
               <%= val.productName %>
             </h3>
             <div class="text-lg font-bold text-indigo-600">
-              Tk. <%= val.price%>
+              Tk. <%= val.price %>
             </div>
             <button
               class="w-full inline-block mt-1 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-1 flex items-center justify-center space-x-2 transition rounded-none"
@@ -321,11 +353,5 @@
     <footer class="bg-indigo-600 text-white text-center py-6 mt-20">
       <p>&copy; 2025 Your E-Commerce Shop. All rights reserved. @mostakin</p>
     </footer>
-
-    <!-- Optional: Add simple slider JS for multiple slides -->
-    <script>
-      // Simple auto slider example (if you want to add multiple slides)
-      // Code left minimal here for clarity; can expand on request.
-    </script>
   </body>
 </html>
